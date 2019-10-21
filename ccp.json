@@ -1,0 +1,60 @@
+{
+    "std::cout":{
+        "prefix": "cout",
+        "body": [
+            "std::cout << \"${1:string}\" << ${2:variable} << std::endl;"
+        ],
+        "description": "Creates console output"
+    },
+    "std::endl":{
+        "prefix": "endl",
+        "body": ["std::endl;"],
+        "description": "Blank Line"
+    },
+    "string":{
+        "prefix": "strng",
+        "body": ["std::string "],
+        "description": "std::string"
+    },
+    "Header Guard":{
+        "prefix": "hdr",
+        "body": ["#ifndef ${TM_FILENAME/^([^\\.]*)\\..*$/${1:/upcase}/}_${TM_FILENAME/^.*\\.([^\\.]*)$/${1:/upcase}/}",
+        "#define ${TM_FILENAME/^([^\\.]*)\\..*$/${1:/upcase}/}_${TM_FILENAME/^.*\\.([^\\.]*)$/${1:/upcase}/}",
+        "\t${1://-- Code --//}",
+        "#endif $LINE_COMMENT ${TM_FILENAME/^([^\\.]*)\\..*$/${1:/upcase}/}_${TM_FILENAME/^.*\\.([^\\.]*)$/${1:/upcase}/}",
+        ""],
+        "description": "Creates header guard"
+    },
+    "include<>":{
+        "prefix": "inc",
+        "body": ["#include <${1:name}>"],
+        "description": "Create #include<>"
+    },
+    "include\"\"":{
+        "prefix": "incl",
+        "body": ["#include \"${1:name}\""],
+        "description": "Create #include \"\""
+    },
+    "namespace":{
+        "prefix": "name",
+        "body": ["namespace ${1:name}",
+        "{",
+        "\t${2://-- code --//}",
+        "}"],
+        "description": "Create namespace"
+    },
+    "class":{
+        "prefix": "clas",
+        "body": ["class ${1:name}",
+        "{",
+        "\tprivate:",
+        "\t",
+        "\tprotected:",
+        "\t",
+        "\tpublic:",
+        "\t",
+        "};"],
+        "description": "Create namespace"
+    }
+
+}
